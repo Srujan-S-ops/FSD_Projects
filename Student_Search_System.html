@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Search System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .box {
+            width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Student Search System</h2>
+
+        <input type="text" id="search"
+               placeholder="Enter student name">
+
+        <br>
+
+        <button onclick="searchStudent()">Search</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        let students = [
+            { name: "Srujan", age: 19, branch: "CSBS" },
+            { name: "Ayush", age: 67, branch: "CSE" },
+            { name: "Niranjan", age: 29, branch: "Mech" },
+            { name: "SuperMan", age: 30, branch: "ECE" },
+            { name: "IronMan", age: 19, branch: "CSBS" }
+        ];
+
+        function searchStudent() {
+
+            let name = document.getElementById("search").value;
+            let found = false;
+
+            for (let i = 0; i < students.length; i++) {
+
+                if (students[i].name.toLowerCase() == name.toLowerCase()) {
+
+                    document.getElementById("result").innerHTML =
+                        "Name: " + students[i].name + "<br>" +
+                        "Age: " + students[i].age + "<br>" +
+                        "Branch: " + students[i].branch;
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == false) {
+                document.getElementById("result").innerHTML =
+                    "No student found";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
