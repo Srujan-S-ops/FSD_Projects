@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Expense Tracker</title>
+
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Expense Tracker</h1>
+
+        <!-- Summary -->
+        <div class="summary">
+
+            <div class="box">
+                <h3>Income</h3>
+                <p id="income">₹0</p>
+            </div>
+
+            <div class="box">
+                <h3>Expenses</h3>
+                <p id="expenses">₹0</p>
+            </div>
+
+            <div class="box">
+                <h3>Balance</h3>
+                <p id="balance">₹0</p>
+            </div>
+
+        </div>
+
+
+        <!-- Add Income -->
+        <div class="form">
+
+            <h2>Add Income</h2>
+
+            <input type="number" id="incomeAmount"
+                placeholder="Enter income">
+
+            <button onclick="addIncome()">
+                Add Income
+            </button>
+
+        </div>
+
+
+        <!-- Add Expense -->
+        <div class="form">
+
+            <h2>Add Expense</h2>
+
+            <input type="text" id="name"
+                placeholder="Expense name">
+
+            <input type="number" id="amount"
+                placeholder="Amount">
+
+            <select id="category">
+
+                <option value="Food">Food</option>
+
+                <option value="Travel">Travel</option>
+
+                <option value="Shopping">Shopping</option>
+
+                <option value="Bills">Bills</option>
+
+                <option value="Education">Education</option>
+
+                <option value="Other">Other</option>
+
+            </select>
+
+            <input type="date" id="date">
+
+            <button onclick="addExpense()">
+                Add Expense
+            </button>
+
+        </div>
+
+
+        <!-- Expense History -->
+        <div class="list">
+
+            <h2>Expense History</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="expenseList">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Bar Graph -->
+        <div class="chart">
+
+            <h2>Expenses by Category</h2>
+
+            <div id="barChart">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="ExpenseTracker.js"></script>
+
+</body>
+
+</html>
