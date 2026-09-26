@@ -60,8 +60,8 @@
             );
 
             let grade;
-
-            if (marks < 0 || marks > 100) {
+            
+            /*if (marks < 0 || marks > 100) {
 
                 document.getElementById("result").innerHTML =
                     "Please enter marks between 0 and 100.";
@@ -86,8 +86,36 @@
             }
             else {
                 grade = "F";
-            }
+            }*/
+switch (true) {
 
+    case marks >= 90:
+        grade = "A+";
+        break;
+
+    case marks >= 80:
+        grade = "A";
+        break;
+
+    case marks >= 70:
+        grade = "B+";
+        break;
+
+    case marks >= 60:
+        grade = "B";
+        break;
+
+    case marks >= 50:
+        grade = "C";
+        break;
+
+    case marks >= 40:
+        grade = "D";
+        break;
+
+    default:
+        grade = "F";
+}
             document.getElementById("result").innerHTML =
                 "Marks: " + marks + "<br>" +
                 "Grade: " + grade;
