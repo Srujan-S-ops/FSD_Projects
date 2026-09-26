@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Quiz Application</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .quiz {
+            width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        .option {
+            display: block;
+            margin: 15px;
+        }
+
+        button {
+            padding: 10px 25px;
+            margin-top: 20px;
+        }
+
+        #result {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz">
+
+        <h2 id="question"></h2>
+
+        <div id="options"></div>
+
+        <button onclick="nextQuestion()">Next</button>
+
+        <p id="result"></p>
+
+    </div>
+
+
+    <script>
+
+        let questions = [
+
+            {
+                question: "Which keyword creates a constant in JavaScript?",
+                options: ["let", "const", "var"],
+                answer: "const"
+            },
+
+            {
+                question: "Which symbol is used for comments in JavaScript?",
+                options: ["//", "##", "**"],
+                answer: "//"
+            },
+
+            {
+                question: "Which method prints output in JavaScript?",
+                options: ["print()", "display()", "console.log()"],
+                answer: "console.log()"
+            }
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+
+        function loadQuestion() {
+
+            document.getElementById("question").innerHTML =
+                (currentQuestion + 1) + ". " +
+                questions[currentQuestion].question;
+
+            let options = "";
+
+            for (let i = 0; i < questions[currentQuestion].options.length; i++) {
+
+                options +=
+                    '<label class="option">' +
+                    '<input type="radio" name="answer" value="' +
+                    questions[currentQuestion].options[i] +
+                    '">' +
+                    questions[currentQuestion].options[i] +
+                    '</label>';
+
+            }
+
+            document.getElementById("options").innerHTML = options;
+
+        }
+
+
+        function nextQuestion() {
+
+            let selected = document.querySelector(
+                'input[name="answer"]:checked'
+            );
+
+            if (!selected) {
+                alert("Please select an answer");
+                return;
+            }
+
+            if (selected.value == questions[currentQuestion].answer) {
+                score++;
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+
+                loadQuestion();
+
+            } else {
+
+                document.getElementById("question").innerHTML =
+                    "Quiz Completed!";
+
+                document.getElementById("options").innerHTML = "";
+
+                document.querySelector("button").style.display = "none";
+
+                document.getElementById("result").innerHTML =
+                    "Your Score: " + score + " / " + questions.length;
+
+            }
+
+        }
+
+
+        loadQuestion();
+
+    </script>
+
+</body>
+</html>
