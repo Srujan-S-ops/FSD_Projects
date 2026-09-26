@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Pattern</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Multiplication Pattern</h2>
+
+    <input type="number" id="num" placeholder="Enter number">
+
+    <button onclick="showPattern()">Generate</button>
+
+    <div id="output"></div>
+
+    <script>
+
+        function showPattern() {
+
+            let n = Number(document.getElementById("num").value);
+            let output = "";
+
+            for (let i = 1; i <= n; i++) {
+
+                for (let j = 1; j <= i; j++) {
+                    output += (i * j) + " ";
+                }
+
+                output += "<br>";
+            }
+
+            document.getElementById("output").innerHTML = output;
+        }
+
+    </script>
+
+</body>
+</html>
