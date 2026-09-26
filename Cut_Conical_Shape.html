@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Multiplication Pattern</title>
+    <title>Multiplication Table</title>
 
     <style>
         body {
@@ -9,41 +9,60 @@
             font-family: Arial;
         }
 
-        #output {
-            margin-top: 20px;
-            font-size: 20px;
-            line-height: 1.8;
+        input {
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 15px;
+        }
+
+        #result {
+            width: 300px;
+            margin: 30px auto;
+            padding: 20px;
+            background: lightblue;
+
+            /* Conical shape */
+            clip-path: polygon(
+                30% 0%,
+                70% 0%,
+                100% 100%,
+                0% 100%
+            );
+        }
+
+        .line {
+            padding: 8px;
         }
     </style>
 </head>
 
 <body>
 
-    <h2>Multiplication Pattern</h2>
+    <h2>Multiplication Table</h2>
 
     <input type="number" id="num" placeholder="Enter number">
 
-    <button onclick="showPattern()">Generate</button>
+    <button onclick="generateTable()">Generate</button>
 
-    <div id="output"></div>
+    <div id="result"></div>
 
     <script>
 
-        function showPattern() {
+        function generateTable() {
 
-            let n = Number(document.getElementById("num").value);
+            let num = Number(document.getElementById("num").value);
             let output = "";
 
-            for (let i = 1; i <= n; i++) {
+            for (let i = 1; i <= 10; i++) {
 
-                for (let j = 1; j <= i; j++) {
-                    output += (i * j) + " ";
-                }
-
-                output += "<br>";
+                output += "<div class='line'>" +
+                          num + " × " + i + " = " + (num * i) +
+                          "</div>";
             }
 
-            document.getElementById("output").innerHTML = output;
+            document.getElementById("result").innerHTML = output;
         }
 
     </script>
