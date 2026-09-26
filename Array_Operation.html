@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .box {
+            width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            padding: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 8px 20px;
+            margin-top: 15px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Student Marks</h2>
+
+        <input type="text" id="marks"
+               placeholder="80,70,90,60">
+
+        <br>
+
+        <button onclick="calculate()">Calculate</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function calculate() {
+
+            let input = document.getElementById("marks").value;
+
+            let marks = input.split(",").map(Number);
+
+            let sum = 0;
+            let largest = marks[0];
+            let smallest = marks[0];
+
+            for (let i = 0; i < marks.length; i++) {
+
+                sum = sum + marks[i];
+
+                if (marks[i] > largest) {
+                    largest = marks[i];
+                }
+
+                if (marks[i] < smallest) {
+                    smallest = marks[i];
+                }
+            }
+
+            let average = sum / marks.length;
+
+            document.getElementById("result").innerHTML =
+                "Largest: " + largest + "<br>" +
+                "Smallest: " + smallest + "<br>" +
+                "Sum: " + sum + "<br>" +
+                "Average: " + average;
+        }
+
+    </script>
+
+</body>
+</html>
