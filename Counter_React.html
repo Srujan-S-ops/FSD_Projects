@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Counter App</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .counter-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .count {
+            font-size: 70px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.85;
+        }
+
+        .increment {
+            background: #28a745;
+        }
+
+        .decrement {
+            background: #dc3545;
+        }
+
+        .reset {
+            background: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Counter() {
+
+            // Load the saved counter value from localStorage
+            const [count, setCount] = React.useState(() => {
+                const savedCount = localStorage.getItem("counterValue");
+                return savedCount !== null ? Number(savedCount) : 0;
+            });
+
+            // Save the counter value whenever it changes
+            React.useEffect(() => {
+                localStorage.setItem("counterValue", count);
+            }, [count]);
+
+            return (
+                <div className="counter-card">
+                    <h1>Counter App</h1>
+                    <p>Click the buttons to change the count!</p>
+
+                    <div className="count">{count}</div>
+
+                    <div className="buttons">
+                        <button
+                            className="decrement"
+                            onClick={() => setCount(count - 1)}>
+                            -
+                        </button>
+
+                        <button
+                            className="reset"
+                            onClick={() => setCount(0)}>
+                            Reset
+                        </button>
+
+                        <button
+                            className="increment"
+                            onClick={() => setCount(count + 1)}>
+                            +
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(
+            document.getElementById('root')
+        );
+
+        root.render(<Counter />);
+    </script>
+
+</body>
+</html>
